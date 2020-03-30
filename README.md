@@ -60,5 +60,5 @@ icon图标组件,图标使用阿里iconfont
 #### 持续更新中...
 
 如有问题请添加微信
-![](https://i.imgur.com/M6m8Fwc.jpg)
+![](https://github.com/Pursue-LLL/commonUi/blob/master/6efe8b68861f240842f0be297055496.jpg)
 
