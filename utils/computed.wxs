@@ -1,0 +1,42 @@
+
+var foo = "你一定会活成你梦想中的样子的"
+//之后修改时间显示格式
+// var formatResTime = function (time) {
+
+//   //获取时间戳
+//   // console.log(Date.parse(time));
+//   // Date.parse(dateStr.replace(/-/gi, "/"));
+
+//   if (time && time.indexOf('月') == -1) {
+//     var reg = getRegExp("[\-]", "g");
+//     var arr = time.replace(reg, " ").split(" ")
+//     var str = arr[1] + '月' + arr[2] + '日' + ' ' + arr[3]
+//     if (str.charAt(0) == 0) {
+//       str = str.substring(1, 12)
+//     } else {
+//       str = str.substring(0, 12)
+//     }
+//     return str;
+//   }
+
+//   return time
+
+// }
+
+
+var totalVotes = function (arr) {
+  var totalVotes = 0
+  var len = arr.length
+  for (var idx = 0; idx < len; idx++) {
+    var item = arr[idx]
+    totalVotes += parseInt(item.votes)
+  }
+  return totalVotes;
+
+}
+
+module.exports = {
+  foo: foo,
+  // formatResTime: formatResTime,
+  totalVotes: totalVotes
+};

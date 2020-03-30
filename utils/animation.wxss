@@ -1,0 +1,342 @@
+
+/* 过渡属性 */
+.transition {
+  transition: All .5s cubic-bezier(0, 0, 0.1, 1);
+}
+
+/* 展开收缩 */
+.slideDown {
+  height: 0;
+  overflow: hidden;
+}
+
+/* 缩放动画 */
+.scale {
+  transition: transform 0.5s;
+  transform: scale(0);
+}
+
+.scaleShow {
+  transform: scale(1);
+}
+
+/* 旋转动画 */
+.rotate {
+  transition: All 0.5s ease;
+}
+
+.rotateShow {
+  transform: rotate(180deg);
+  transform-origin: center center;
+}
+
+
+/* 闪烁图标 infinite */
+.glimmer {
+  animation: scaleout 1.1s 3 ease-in-out;
+}
+
+@keyframes scaleout {
+  0% {
+    transform: scale(0.8);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+/* 摇动渐隐 */
+.RockOpa {
+  animation: RockOpa 1.1s infinite ease-in-out;
+}
+
+@keyframes RockOpa {
+  0% {
+    opacity: 1;
+  }
+
+  40% {
+    transform: rotate(20deg);
+  }
+
+  80% {
+    transform: rotate(-20deg);
+  }
+
+  100% {
+    opacity: 0.9;
+  }
+}
+
+/* 缩放摇动 */
+.scaleRock {
+  animation: scaleRock 1.1s infinite ease-in-out;
+}
+
+@keyframes scaleRock {
+  0% {
+    transform: scale(1.0);
+  }
+
+  40% {
+    transform: rotate(20deg);
+  }
+
+  80% {
+    transform: rotate(-20deg);
+  }
+
+  100% {
+    transform: scale(1.2);
+    opacity: 0.4;
+  }
+}
+
+/* 旋转 */
+.iconSpin {
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+  display: inline-block;
+}
+
+.iconPulse {
+  -webkit-animation: spin 1s infinite steps(8);
+  animation: spin 1s infinite steps(8);
+  display: inline-block;
+}
+
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+/* 水波纹 */
+.animation-ripple {
+  animation-name: ripple
+}
+
+@keyframes ripple {
+  0% {
+    opacity: .3;
+  }
+
+  40% {
+    -webkit-box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px 10px #14A6EC, 0 0 0 10px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px 10px #14A6EC, 0 0 0 10px rgba(255, 255, 255, 0.5);
+    opacity: .5;
+  }
+
+  100% {
+    -webkit-box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px 10px #14A6EC, 0 0 0 10px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px 10px #14A6EC, 0 0 0 10px rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+}
+
+
+
+
+
+/* Animation css */
+[class*=animation-] {
+  animation-duration: .5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both
+}
+
+.animation-fade {
+  animation-name: fade;
+  animation-duration: .8s;
+  animation-timing-function: linear
+}
+
+.animation-fadeOut {
+  animation-name: fadeOut;
+  animation-duration: .8s;
+  animation-timing-function: linear
+}
+
+.animation-scale-up {
+  animation-name: scale-up
+}
+
+.animation-scale-down {
+  animation-name: scale-down;
+
+}
+
+.animation-slide-top {
+  animation-name: slide-top;
+
+}
+
+.animation-slide-bottom {
+  animation-name: slide-bottom
+}
+
+.animation-slide-left {
+  animation-name: slide-left
+}
+
+.animation-slide-right {
+  animation-name: slide-right
+}
+
+.animation-shake {
+  animation-name: shake
+}
+
+.animation-reverse {
+  animation-direction: reverse
+}
+
+
+
+@keyframes fade {
+  0% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scale-up {
+  0% {
+    opacity: 0;
+    transform: scale(.2)
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1)
+  }
+}
+
+@keyframes scale-down {
+  0% {
+    opacity: 0;
+    transform: scale(1.8)
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1)
+  }
+}
+
+@keyframes slide-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+@keyframes slide-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100%)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0)
+  }
+
+  10% {
+    transform: translateX(-9px)
+  }
+
+  20% {
+    transform: translateX(8px)
+  }
+
+  30% {
+    transform: translateX(-7px)
+  }
+
+  40% {
+    transform: translateX(6px)
+  }
+
+  50% {
+    transform: translateX(-5px)
+  }
+
+  60% {
+    transform: translateX(4px)
+  }
+
+  70% {
+    transform: translateX(-3px)
+  }
+
+  80% {
+    transform: translateX(2px)
+  }
+
+  90% {
+    transform: translateX(-1px)
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    opacity: 0;
+    transform: translateX(100%)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
