@@ -22,27 +22,19 @@ commonUi 不是一个框架,但是他会提供给你框架所能给你带来的�
 #### **system.js**
 该文件导出一个立即执行函数,将常用变量和api封装起来挂在wx对象上,提供了系统参数如导航栏高度、状态栏高度、机型等常量，封装了网络请求授权验证微信支付以及组件调用等api  
 例如使用‘wx.isX’来判断当前机型是否是iphoneX  
-例如我们要使用commonUi提供的比官方更漂亮更强大的modal组件，  
-           ```wx._showModal(that, {  
-    
+例如我们要使用commonUi提供的比官方更漂亮更强大的modal组件，    
+
+              wx._showModal(that, {  
                 title: '请您注意',  
-                
                 hint: '您选择的图片经检测包含违规内容,如有异议,可点击下方申诉',  
-                
                 cancle: '我要申诉',  
-                
                 confirm: '我知道了'  
-                
               }).then(() => {  
-              
                 console.log('确定');  
-                
               }).catch(() => {  
-              
                 console.log('取消');  
-                
               })
-              ```
+              
 你是否发现与官方组件的调用方法一样，而且还是promise的方式，而以往你用的组件一定都是在data里初始化你组件所用的数据，然后在wxml中引入组件使用一大堆的‘data-’来传入值，如果一个页面需要使用多个这样的组件，你就要引入多个，使用commonUi，你只需要调用api定制你的组件内容。  
 使用:在app.js import './utils/system';  
 #### **utils.js**
