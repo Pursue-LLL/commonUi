@@ -60,5 +60,6 @@ icon图标组件,图标使用阿里iconfont
 #### 持续更新中...
 
 如有问题请添加微信
-![](http://yun.qyayun.com/2020/03/30/b3d451b3406acff980e4b93f81bf3084.jpg)
+
+![微信](http://yun.qyayun.com/2020/03/30/b3d451b3406acff980e4b93f81bf3084.jpg)
 
