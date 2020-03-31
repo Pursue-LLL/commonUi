@@ -50,7 +50,10 @@ onLaunch生命周期中 wx.util = util  即可全局使用wx.util调用工具函
 该文件夹包含20+功能强大的ui组件 ,在页面的json文件里注册即可使用,如ui-icon、ui-toast等组件需要全局使用的,需在app.json里注册
 #### **ui-icon**
 icon图标组件,图标使用阿里iconfont  
-例 <ui-icon type="arrow-right" color="#eee" size="22"></ui-icon>  使用一个向右的箭头 颜色#eee 尺寸22  
+例 使用一个向右的箭头 颜色#eee 尺寸22  
+
+    <ui-icon type="arrow-right" color="#eee" size="22"><ui-icon>  
+    
 #### **其余组件 持续更新...**
 ### 其他功能性模块可根据需要使用 
 #### **自定义tabbar**
