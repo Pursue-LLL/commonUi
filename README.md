@@ -21,7 +21,7 @@ commonUi 不是一个框架,它提供给你一个完整的开发思路,是一套
 使用:app.wxss 引入  
 #### **system.js**
 该文件导出一个立即执行函数,将常用变量和api封装起来挂在wx对象上,提供了系统参数如导航栏高度、状态栏高度、机型等常量，封装了网络请求授权验证微信支付以及组件调用等api  
-例如使用‘wx.isX’来判断当前机型是否是iphoneX  
+例如使用'wx.IS_IPHONEX'来判断当前机型是否是iphoneX  
 例如我们要使用commonUi提供的比官方更漂亮更强大的modal组件，    
 
               wx._showModal(this, {  //this 当前页面实例  
