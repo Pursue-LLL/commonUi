@@ -24,7 +24,7 @@ commonUi 不是一个框架,它提供给你一个完整的开发思路,是一套
 例如使用‘wx.isX’来判断当前机型是否是iphoneX  
 例如我们要使用commonUi提供的比官方更漂亮更强大的modal组件，    
 
-              wx._showModal(that, {  
+              wx._showModal(this, {  //this 当前页面实例  
                 title: '请您注意',  
                 hint: '您选择的图片经检测包含违规内容,如有异议,可点击下方申诉',  
                 cancle: '我要申诉',  
