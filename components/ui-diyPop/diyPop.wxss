@@ -1,0 +1,30 @@
+  .popHead {
+    flex: 0 0 90rpx;
+    border-bottom: rgb(241, 241, 241) solid 1px;
+    border-radius: 40rpx;
+  }
+
+  .popExitimg {
+    width: 46rpx;
+    height: 46rpx;
+  }
+
+  .closePop,
+  .tapBtn {
+    width: 170rpx;
+  }
+
+  .popTitle {
+    font-family: STHeitiSC-Light;
+    font-weight: 700;
+    font-size: 30rpx;
+    color: #828282;
+    letter-spacing: 2rpx;
+  }
+
+  .diyPopBtn {
+    padding: 0 30rpx;
+    font-size: 24rpx;
+    height: 54rpx;
+    margin-left: 0;
+  }

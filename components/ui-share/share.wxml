@@ -1,0 +1,35 @@
+<!-- 分享pop -->
+<ui-popup show="{{show}}" bindhide="popHide" position="left" height="25%">
+
+  <view class="flex-row popview">
+    <!-- 获取formId用于发送模板消息 -->
+    <view style="width: 50%">
+      <ui-formId btnType="share" btnClass="v-vhc">
+        <ui-icon style="height: 35rpx" color="rgb(33, 136, 233)" size="40" type="wechat"></ui-icon>
+        <view class="popText">分享给微信好友</view>
+      </ui-formId>
+    </view>
+    <view style="width: 50%">
+      <ui-formId btnClass="v-vhc" bindtap="openPoster">
+        <ui-icon style="height: 35rpx" color="rgb(33, 136, 233)" size="40" type="xiazai"></ui-icon>
+        <view class="popText">分享海报到朋友圈</view>
+      </ui-formId>
+    </view>
+  </view>
+</ui-popup>
+
+<!-- 海报pop -->
+<ui-popup show="{{showPosterPop}}" bindhide="closePoster" position="right" height="87%" width="100%">
+  <view style="width:100%;height: 100%" class="v-hc">
+    <view class="posterTitle">将图片保存后分享到微信朋友圈吧
+    </view>
+    <ui-icon class="popCha" bindtap="closePoster" type="fork" size="16" color="#636664"></ui-icon>
+    <swiper class="popSwiper " current="{{currentSwiper}}" previous-margin="70rpx" next-margin="70rpx"
+      skip-hidden-item-layout="{{true}}" circular="{{true}}" bindchange="swiperChange" bindanimationfinish="">
+      <swiper-item wx:for="{{posters}}" wx:key="img" class="popItem h-vhc">
+        <image bindload="imgDone" class="{{currentSwiper==index?'popImg':'sImg'}}" src="{{item}}"></image>
+      </swiper-item>
+    </swiper>
+    <view class="popButton" bindtap="saveImg">保存图片</view>
+  </view>
+</ui-popup>

@@ -1,0 +1,13 @@
+
+.help {
+  height: fit-content;
+  padding: 50rpx 40rpx;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: rgba(74, 74, 74, 1);
+  
+}
+
+
+

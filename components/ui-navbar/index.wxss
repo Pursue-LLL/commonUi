@@ -1,0 +1,44 @@
+.ui-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 14px;
+  z-index: 996;
+  user-select: none;
+  box-sizing: border-box;
+}
+.ui-nav-bar.noFixed{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ui-nav-bar-content {
+  color: #fff;
+  font-size: 32rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+}
+
+.ui-nav-bar-content .nav-bar-left {
+  padding-left: 26rpx;
+  font-size: 28rpx;
+}
+
+.ui-nav-bar-content .nav-bar-center {
+  position: relative;
+  flex: 1;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.navTitle{
+  font-size:34rpx;
+  font-family:PingFang SC;
+  font-weight:600;
+  color:rgba(255, 255, 255, 1);
+}

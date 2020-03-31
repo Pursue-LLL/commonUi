@@ -1,0 +1,3 @@
+<view wx:if="{{show}}" style="background: radial-gradient({{err?bg0:bg1}}, rgba(255, 255, 255, 0.8))" class="absoluteAuto toast h-hvc  {{hide?'animation-fadeOut':''}} {{X?'Xpadding':''}}">
+  {{text}}
+</view>

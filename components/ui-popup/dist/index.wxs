@@ -1,0 +1,30 @@
+
+
+module.exports = {
+
+  propObserver: function (newValue, oldValue, ownerInstance, e) {
+    // var position = e.getDataset().position
+    var ins = ownerInstance.selectComponent('.ui-popup-content')
+    var maskins = ownerInstance.selectComponent('.ui-popup-mask')
+    if (newValue) {
+      e.setStyle({
+        "visibility": "visible"
+      })
+      maskins.setStyle({
+        "opacity": "1"
+      })
+      ins.addClass('show')
+
+    }else{
+      e.setStyle({
+        "visibility": "hidden"
+      })
+      maskins.setStyle({
+        "opacity": "0"
+      })
+
+      ins.removeClass('show')
+
+    }
+  }
+}

@@ -1,0 +1,20 @@
+
+
+<view class="h-vc ui-nav-bar {{hideBorder?'':'dBorder'}} {{noFixed?'noFixed':''}}" style="background: {{bg}}; padding-top: {{statusHeight}}px;height:{{navHeight}}px">
+  <view wx:if="{{!customSlot}}" class="ui-nav-bar-content h-hvc h100 w100">
+    <view  class="h-vc h100" style="width:180rpx"  bindtap="goBack">
+      <ui-icon wx:if="{{showBack}}" class="nav-bar-left" color="{{color}}" type="arrow-left" size="17"></ui-icon>
+      <view wx:if="{{showBack}}" style="color:{{color}};margin-left: -20rpx" class="nav-bar-left">返回</view>
+    </view>
+
+    <view style="color:{{color}}" class="h-hvc nav-bar-center navTitle">{{title}}</view>
+    <view style="width: 180rpx"></view>
+  </view>
+
+  <view wx:else class="ui-nav-bar-content h-vc">
+    <slot></slot>
+  </view>
+</view>
+
+<!-- 需要占位-->
+<view wx:if="{{!noHolder}}" style="height:{{navHeight}}px"></view>

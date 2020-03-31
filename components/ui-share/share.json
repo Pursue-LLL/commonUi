@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "ui-popup": "../ui-popup/dist/index",
+    "ui-mask": "../ui-mask/dist/index",
+    "ui-icon":"../ui-icon/icon"
+  },
+
+  "component": true
+}

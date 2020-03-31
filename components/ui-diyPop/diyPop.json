@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ui-popup": "../ui-popup/dist/index"
+  },
+  "component": true
+}

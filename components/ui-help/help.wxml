@@ -1,0 +1,6 @@
+<!-- 帮助说明弹窗 -->
+<ui-popup show="{{show}}" bindhide="popHide" position="bottom" width="80%" background='rgba(255, 255, 255, 0.9)'>
+  <view class="help">
+    <text>{{text}}</text>
+  </view>
+</ui-popup>

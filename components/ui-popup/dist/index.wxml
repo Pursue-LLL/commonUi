@@ -1,0 +1,9 @@
+<wxs module="wxs" src="./index.wxs"></wxs>
+<!-- data-position="{{position}}" -->
+<view style="top: {{popTop}}" change:prop="{{wxs.propObserver}}" prop="{{show}}" class="ui-popup "  catchtouchmove="handleTouchMove">
+  <view style="{{ selfContentStyle }} "
+    class="ui-popup-content {{position}} {{radius?'radius':''}}">
+    <slot></slot>
+  </view>
+  <view style="{{ selfMaskStyle }};top: {{popTop}}" class="ui-popup-mask " bindtap="handleMaskTap"></view>
+</view>

@@ -1,0 +1,77 @@
+/* ==================
+         模态窗口
+ ==================== */
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1110;
+  opacity: 0;
+  text-align: center;
+  transform: scale(1.185);
+
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+  margin: auto;
+  padding: 0 30rpx;
+}
+
+
+.modal.show {
+  visibility: initial;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.dialogtitle {
+  font-size: 34rpx;
+  color: #6d6d6d;
+}
+
+.dialogcontent {
+  font-size: 30rpx;
+  color: #3d3d3d;
+}
+
+.dialog {
+  position: relative;
+  display: inline-block;
+  width: 680rpx;
+  max-width: 96%;
+  background-color: #fafafa;
+  border-radius: 14rpx;
+  overflow: hidden;
+  height: initial;
+
+}
+
+.modaltextarea {
+  /* line-height: 40rpx; */
+  border: 1px solid #c9c9c9;
+  width: 95%;
+  text-align: left;
+  margin: 30rpx auto;
+  height: 110rpx;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+}
+
+.modalinput {
+  /* line-height: 40rpx; */
+  border: 1px solid #c9c9c9;
+  width: 95%;
+  text-align: left;
+  margin: 30rpx auto;
+  height: 90rpx;
+  padding: 20rpx;
+
+}
+
+.textarea-placeholder {
+  color: #858585;
+  font-size: 26rpx;
+}

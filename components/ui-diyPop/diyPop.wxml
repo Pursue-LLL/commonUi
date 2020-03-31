@@ -1,0 +1,15 @@
+<!-- 学校pop -->
+<ui-popup show="{{show}}" position="{{position}}" radius width="100%" height="{{height}}" background="#fff" bindhide="closePop">
+  <view class="col">
+    <view class="popHead h-vc sb bg-white">
+      <view class="h-vc closePop" bindtap="closePop">
+        <image class="popExitimg ml-l" src="/images/close{{theme.type}}.png" />
+      </view>
+      <view class="popTitle">{{title}}</view>
+      <view class="tapBtn h-hvc">
+        <ui-button wx:if="{{btnText}}" my-class="diyPopBtn" shadow round bindclick="tapBtn">{{btnText}}</ui-button>
+      </view>
+    </view>
+    <slot></slot>
+  </view>
+</ui-popup>

@@ -1,0 +1,10 @@
+<view class="bar bg-white">
+  <view class="search-form round">
+    <ui-icon class="ml-m mr-s" size="13" type="search"></ui-icon>
+    <input bindinput="searchMonitor" value="{{value}}" adjust-position="true" type="text" placeholder="输入你要搜索的关键词"
+      confirm-type="search"></input>
+  </view>
+  <view class="h-hvc mr-m">
+    <ui-button shadow round bindclick="clickSearch">搜索</ui-button>
+  </view>
+</view>
