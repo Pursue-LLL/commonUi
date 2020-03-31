@@ -1,47 +1,14 @@
-/* 初始化云开发数据库 */
-wx.cloud.init({
-  env: 'xxiaoer-server-oey7d',
-  traceUser: true,
-})
-//获取数据库实例
-wx.db = wx.cloud.database()
-wx._ = wx.db.command
-wx.$ = wx.db.command.aggregate
-
-/* 初始化高度地图 */
-const amapFile = require('../utils/amap-wx.js');
-const myAmap = new amapFile.AMapWX({
-  key: '19e07dcf72353cc39f2c7bf9bcf56a13'
-});
-wx.myAmap = myAmap
-
-
-//引入计算属性和监听属性工具类库  //注意按需加载
-wx.computedBehavior = require('miniprogram-computed')
-
-/* 引入全局事件通讯模块 */
-wx.eventBus = require('./event-bus')
-
-//引入mobx 状态管理
-// import { storeBindingsBehavior, createStoreBindings } from 'mobx-miniprogram-bindings'
-// import { store } from '../utils/store'
-// wx.store = store
-// wx.storeBindings = storeBindingsBehavior
-// wx.createBindings = createStoreBindings
-
-
 
 const isNumber = targe => Object.prototype.toString.call(targe) === '[object Number]'
 const isArray = targe => Object.prototype.toString.call(targe) === '[object Array]'
 const isString = targe => Object.prototype.toString.call(targe) === '[object String]'
 const isObject = targe => Object.prototype.toString.call(targe) === '[object Object]'
-
 // const isUndefined = targe => Object.prototype.toString.call(targe) === '[object Undefined]'
 // const isBoolean = targe => Object.prototype.toString.call(targe) === '[object Boolean]'
 // const isFunction = targe => Object.prototype.toString.call(targe) === '[object Function]'
 
 
-
+/* 该部分为页面的通用函数 在页面的methods对象中使用 ...wx.commonFun */
 const commonFun = {
   /* 临时图片操作相关 */
   previewTmpImg(e) {
@@ -59,147 +26,6 @@ const commonFun = {
     wx.util.delChoosedImg(e, this)
   },
 }
-
-
-
-/**
- * 后端数据相关api
- *
- * */
-wx.Api = {}
-/**
- *  删除cdn上传的图片资源
- *
- * @param {string|string[]} urls
- */
-wx.Api.delImg = function (urls) {
-  console.log('本次要删除素材',urls);
-  if (!urls || urls.length == 0) return
-  if (isArray(urls)) {
-    urls = urls.map((item => {
-      return item.subBefore("!")          //(截掉附加的后缀)
-    }))
-  } else {
-    urls = urls.subBefore("!")
-  }
-
-  const del = wx.Bmob.File()
-  del.destroy(urls).then((res) => {
-    console.log("删除素材成功", res);
-  }).catch(function (err) {
-    console.log(err);
-  });
-}
-
-/* 格式化服务器时间 */
-wx.Api.getServeDate = function (date) {
-  return wx.$.dateToString({
-    date: date,
-    format: '%m月%d日 %H:%M',
-    timezone: 'Asia/Shanghai'
-  })
-}
-
-/* 更新集合特定字段 */
-wx.Api.updateCollection = async function (_id, model, data) {
-  try {
-    return await wx.cloud.callFunction({
-      name: 'updateCollection',
-      data: {
-        _id,
-        model,
-        data
-      }
-    })
-  } catch (e) {
-    console.error(e)
-  }
-}
-
-/**
- *
- *  多个操作符更新字段
- * @param {*} _id
- * @param {*} model
- * @param {object|object[]} update
- * @param {string} update.field-。
- * @param {string} update.cmd-。
- * @param {string} update.val-。
-
- * @returns
- */
-wx.Api.updateByCmd = async function (data) {
-  try {
-    return await wx.cloud.callFunction({
-      name: 'updateByCmd',
-      data
-    })
-  } catch (e) {
-    console.error(e)
-  }
-}
-
-// 检测敏感词 wx.Api.msgSecCheck
-wx.Api.msgSecCheck = function (msg) {
-  return new Promise((resolve) => {
-    let data = {
-      msg: msg
-    }
-    wx.ajax('wxApi/msgSecCheck', data).then((res) => {
-      console.log(res)
-      if (res.errcode == 87014) {
-        wx.Toast(this, '您再检查一下,输入的内容里不要包含敏感词哦~')
-        //计入评分系统 不要尝试发送违规内容
-        resolve(false)
-      }
-      resolve(true)
-    }).catch((res) => {
-      console.log('捕获错误', res);
-    })
-  })
-}
-
-/* 获取官方预设数据 */
-wx.Api.getOfficialData = function (field) {
-  return new Promise((resolve) => {
-    wx.db.collection("_Official").doc('official_preset_doc').field({
-      [field]: true,
-    }).get().then(res => {
-      resolve(res.data[field])
-    })
-  })
-}
-
-/* 添加通知消息 */
-wx.Api.addMessage = async function (_id, field, data) {
-  let msgObj = {
-    _id: wx.util.generateUUID(),
-    avatar: wx.MY.avatar,
-    nickName: wx.MY.nickName,
-    msg: '关注了你',
-    user_id: wx.MYID,
-    createdAt: wx.db.serverDate(),//{offset: 60 * 60 * 1000 * 8}
-  }
-  Object.assign(msgObj, data)
-  return await wx.Api.updateByCmd({
-    _id,
-    model: 'message',
-    update: [
-      {
-        field: `${field}Msg`,
-        cmd: 'unshift',
-        val: msgObj
-      }, {
-        field: `${field}UnviewNum`,
-        cmd: 'inc',
-        val: 1
-      }
-    ]
-  })
-}
-
-
-
 
 
 /**
@@ -596,10 +422,8 @@ const delChoosedImg = function (e, that) {
   that.setData({
     ['tempChoosedImg']: that.data.tempChoosedImg,
   })
-  /* //!存在没有发布就退出的情况 此时图片已经被直接被删除 */
-  if (url.includes('qyayun')) {
-    wx.Api.delImg(url)
-  }
+  /* 下面写后端删除图片的代码 */
+
 }
 
 
@@ -607,7 +431,6 @@ const delChoosedImg = function (e, that) {
 const checkImage = async (curImgs) => {
   const Pm = curPath => new Promise((resolve) => {
     let data = wx.getFileSystemManager().readFileSync(curPath)
-    console.log(data);
 
     wx.cloud.callFunction({
       name: 'imgSecCheck',
@@ -629,10 +452,6 @@ const checkImage = async (curImgs) => {
       const promise = Pm(curImgs[i])
       tasks.push(promise)
     }
-    /* 按顺序 */
-    // return (await Promise.all(tasks)).reduce((acc, cur) => {
-    //   return acc.concat(cur)
-    // },[])
     return await Promise.all(tasks)
   } catch (e) {
     console.error(e)
@@ -663,10 +482,6 @@ const compressImage = async (curImgs) => {
       const promise = Pm(curImgs[i])
       tasks.push(promise)
     }
-    /* 按顺序 */
-    // return (await Promise.all(tasks)).reduce((acc, cur) => {
-    //   return acc.concat(cur)
-    // },[])
     return await Promise.all(tasks)
   } catch (e) {
     console.error(e)
@@ -733,59 +548,15 @@ const chooseImage = function (arred = [], that, limit = 9) {
 
 /**
  *
- *上传图片 (压缩完再上传)
- * @param {*} that
- * @param {*} prefix
- * @param {*} imgInfo  是否需要上传大图
- * @param {*} urls  选择图片直接上传的需要给定本次上传的urls
- * @returns
+ *上传图片 (压缩完再上传,根据实际情况封装)
+
  */
 const uploadPic = function (that, { prefix, imgInfo, urls } = {}) {
   return new Promise((resolve) => {
     var arr = urls || that.data.tempChoosedImg  //(临时被选择图片,选择完可以预览编辑的情况)
     console.log("本次上传图片", arr);
     if (arr.length) {
-      var file;
-      let fileName = `${prefix}_${wx.MY.nickName}_${wx.MYID}_.png`
-      // console.log(fileName);
 
-      let cdns = arr.filter((item) => { return item.includes('qyayun') })
-      //如果全部都为网图  直接返回 不重新上传
-      if (cdns.length == arr.length) {
-        resolve(arr)
-        return
-      }
-
-      let urls = []
-      for (const item of arr) {
-        if (item.includes('qyayun')) {
-          //如果只有一张网图 原链接不带后缀
-          if (cdns.length == 1) {
-            item += wx.globalData.imgCompress
-          }
-          urls.push(item)
-        } else {
-          file = wx.Bmob.File(fileName, item);
-        }
-      }
-      file.save().then(res => {
-        console.log(res);
-        for (const item of res) {
-          var addstr = '!' + wx.globalData.imgCompress
-          //!  getImageInfo不支持获取webp图片信息(一张图的情况)
-          if (imgInfo && arr.length == 1) addstr = '!'
-          item.url = item.url.replace("bmob-cdn-19715.b0.upaiyun.com", "yun.qyayun.com") + addstr
-          urls.push(item.url)
-        }
-        wx.dotHide(that);
-        resolve(urls)
-        // console.log(res)
-        console.log("上传图片到服务器成功", urls)
-      }).catch(err => {
-        console.log(err)
-        wx.Toast(that, '网络开小差了~再试一下')
-        wx.dotHide(that)
-      })
     } else {  //没有图片
       resolve([])
     }
@@ -793,22 +564,9 @@ const uploadPic = function (that, { prefix, imgInfo, urls } = {}) {
 }
 
 
-// 预览服务器图片 预览和原图统一80压缩率
-const previewNetImage = function (current, imgArr, isBig) {
-  if (imgArr.length == 1 && isBig) { //有大图
-    var urls = [imgArr[0].url + wx.globalData.imgCompress];
-    // console.log('当前链接', urls)
-    current += wx.globalData.imgCompress
-  } else {
-    var urls = imgArr;
-    // console.log('当前链接数组', urls)
-  }
-  console.log('当前current', current);
+// 预览服务器图片 根据情况封装
+const previewNetImage = function (current, imgArr) {
 
-  wx.previewImage({
-    current,
-    urls,
-  });
 }
 
 
