@@ -1,9 +1,0 @@
-<view class="confirm h-hvc {{show?'show':''}}">
-  <view class="dialog v-hc ">
-    <view class="title fitRestH">{{title}}</view>
-    <view class="h-vc sb mt-auto fitH">
-      <view hover-class="btnHover" class="btnView cancleBtn h-hvc shadow-warp-s" bindtap="cancle">{{cancleText}}</view>
-      <view hover-class="btnHover" style="background:{{theme.btnBg}}" bindtap="confirm" class="btnView confirmBtn h-hvc shadow-blur-s">{{confirmText}}</view>
-    </view>
-  </view>
-</view>

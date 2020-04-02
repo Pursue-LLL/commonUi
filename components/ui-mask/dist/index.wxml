@@ -1,4 +1,0 @@
-<view class="ui-mask my-class {{ effect }} {{ blurClass }} {{ selfShow ? 'show' : ''}}" style="{{ selfCustomStyle }}"
-  bindtap="handleMaskTap" catch:touchmove="touchmove">
-  <slot></slot>
-</view>

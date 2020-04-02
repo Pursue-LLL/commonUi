@@ -152,7 +152,7 @@ Array.prototype.merge = function (arr) {
 //数组去重
 // Array.prototype.dedupe = function(array) {
 //   return Array.from(new Set(array));
-// let unique = [...new Set(arr)];
+//   let unique = [...new Set(arr)];
 // }
 
 
@@ -432,18 +432,19 @@ const checkImage = async (curImgs) => {
   const Pm = curPath => new Promise((resolve) => {
     let data = wx.getFileSystemManager().readFileSync(curPath)
 
-    wx.cloud.callFunction({
-      name: 'imgSecCheck',
-      data: {
-        data: data
-      }
-    }).then(res => {
-      // console.log(res);
-      resolve(res.result.errCode)
+    /* 检测违规函数 */
+    // wx.cloud.callFunction({
+    //   name: 'imgSecCheck',
+    //   data: {
+    //     data: data
+    //   }
+    // }).then(res => {
+    //   // console.log(res);
+    //   resolve(res.result.errCode)
 
-    }).catch(err => {
-      console.log(err);
-    })
+    // }).catch(err => {
+    //   console.log(err);
+    // })
   })
   try {
     let len = curImgs.length

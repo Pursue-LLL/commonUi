@@ -1,6 +1,0 @@
-    <form wx:if="{{show}}" style="height:100%;" report-submit="{{true}}" bindsubmit="getFormId">
-      <button style="{{selfCustomStyle}}" class='resetBtn  my-class ' 
-        form-type="submit">{{btnText}}
-        <slot></slot>
-      </button>
-    </form>
