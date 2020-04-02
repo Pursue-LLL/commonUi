@@ -2,65 +2,14 @@
         初始化
  ==================== */
 page {
-  --red: #e54d42;
-  --orange: #f37b1d;
-  --yellow: #fbbd08;
-  --olive: #8dc63f;
-  --green: #39b54a;
-  --cyan: #1cbbb4;
-  --blue: #0081ff;
-  --purple: #6739b6;
-  --mauve: #9c26b0;
-  --pink: #e03997;
-  --brown: #a5673f;
   --grey: #8799a3;
   --black: #4b4b4b;
   --darkGray: #5f5d5d;
   --gray: #aaaaaa;
   --ghostWhite: #f5f5f5;
   --white: #ffffff;
-  /* 浅色 */
-  --redLight: #fadbd9;
-  --orangeLight: #fde6d2;
-  --yellowLight: #fef2ce;
-  --oliveLight: #e8f4d9;
-  --greenLight: #d7f0db;
-  --cyanLight: #d2f1f0;
-  --blueLight: #cce6ff;
-  --purpleLight: #e1d7f0;
-  --mauveLight: #ebd4ef;
-  --pinkLight: #f9d7ea;
-  --brownLight: #ede1d9;
-  --greyLight: #e7ebed;
-  /* 渐变色 */
   --gradualRed: linear-gradient(45deg, #f43f3b, #ec008c);
-  --gradualOrange: linear-gradient(45deg, #e78354, rgb(245, 117, 94));
-  --gradualGreen: linear-gradient(45deg, #39b54a, #8dc63f);
-  --gradualPurple: linear-gradient(45deg, #9000ff, #5e00ff);
-  --gradualPink: linear-gradient(45deg, #ec008c, #6739b6);
-  --gradualBlue: linear-gradient(45deg, rgb(33, 192, 139), rgb(45, 155, 163));
-  --gradualbtnBg1: linear-gradient(110deg, rgba(12, 158, 97, 0.6), rgba(9, 143, 132, 0.7));
-  --gradualnavBg1: linear-gradient(110deg, rgb(8, 189, 150), rgb(28, 185, 164));
-  --gradualbtnBg0: linear-gradient(150deg, rgba(245, 117, 94, 0.7), rgba(230, 175, 94, 0.8));
-  --gradualnavBg0: linear-gradient(110deg, rgb(245, 117, 94), #F5AC6E);
-  /* 阴影透明色 */
-  --ShadowSize: 6rpx 6rpx 8rpx;
-  --redShadow: rgba(204, 69, 59, 0.2);
-  --orangeShadow: rgba(217, 109, 26, 0.2);
-  --yellowShadow: rgba(224, 170, 7, 0.2);
-  --oliveShadow: rgba(124, 173, 55, 0.2);
-  --greenShadow: rgba(48, 156, 63, 0.2);
-  --cyanShadow: rgba(28, 187, 180, 0.2);
-  --blueShadow: rgba(0, 102, 204, 0.2);
-  --purpleShadow: rgba(88, 48, 156, 0.2);
-  --mauveShadow: rgba(133, 33, 150, 0.2);
-  --pinkShadow: rgba(199, 50, 134, 0.2);
-  --brownShadow: rgba(140, 88, 53, 0.2);
-  --greyShadow: rgba(114, 130, 138, 0.2);
-  --grayShadow: rgba(114, 130, 138, 0.2);
-  --blackShadow: rgba(26, 26, 26, 0.2);
 
-  /* background-color: var(--ghostWhite); */
   font-size: 30rpx;
   color: var(--black);
   font-family: Helvetica Neue, Helvetica, sans-serif;
@@ -97,24 +46,20 @@ input {
 }
 
 
-/* flex布局样式 */
+/* ==================
+        flex布局样式
+ ==================== */
+
+/* 水平 */
 .row {
   display: flex;
   flex-direction: row;
 }
-
+/* 垂直 */
 .col {
   display: flex;
   flex-direction: column;
   height: 100%;
-}
-
-
-/* 横向垂直水平居中 */
-.h-hvc {
-  display: flex;
-  justify-content: center !important;
-  align-items: center;
 }
 
 /* 横向水平居中 */
@@ -131,71 +76,17 @@ input {
   flex-direction: row;
 }
 
-.f_start {
-  justify-content: flex-start;
-}
-
-.f_end {
-  justify-content: flex-end;
-}
-
-/* 水平换行 */
-.wrap {
-  flex-wrap: wrap;
-}
-
-.sa {
-  justify-content: space-around;
-}
-
-.sb {
-  justify-content: space-between;
-}
-
-
-.h-vcr {
+/* 横向水平垂直居中 */
+.h-hvc {
   display: flex;
-  flex-direction: row;
+  justify-content: center !important;
   align-items: center;
-  justify-content: flex-end;
 }
 
-.h-vcl {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-
-/* 横向水平居中上对齐*/
-.h-hct {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-/* 水平居中下对齐 */
-.h-hcd {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
-}
-
-.h-t {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-}
-
-
-/* 纵向垂直水平居中 */
-.v-vhc {
+/* 纵向水平居中 */
+.v-hc {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
@@ -206,21 +97,65 @@ input {
   justify-content: center;
 }
 
-/* 纵向垂直居中右对齐 */
-/* .v-vcr {
+/* 纵向垂直水平居中 */
+.v-vhc {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content:flex-end;
-} */
-
-/* 纵向水平居中 */
-.v-hc {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* height: 100%; */
 }
+
+/* 左对齐 */
+.f_l {
+  justify-content: flex-start;
+}
+
+/* 右对齐 */
+.f_r {
+  justify-content: flex-end;
+}
+
+/* 上对齐 */
+.f_t{
+  align-items: flex-start;
+}
+
+/* 下对齐 */
+.f_b{
+  align-items: flex-end;
+}
+
+/* 均分对齐 */
+.f_sa {
+  justify-content: space-around;
+}
+
+/* 边界对齐 */
+.f_sb {
+  justify-content: space-between;
+}
+
+/* 水平换行 */
+.wrap {
+  flex-wrap: wrap;
+}
+
+/* 适配剩余高度 */
+.fitRestH {
+  flex-grow: 1;
+  height: 0;
+}
+
+.fitRestW {
+  flex-grow: 1;
+  width: 0;
+}
+
+.fitRest {
+  flex-grow: 1;
+}
+
+
 
 /* 水平垂直居中 */
 .absoluteAuto {
@@ -232,21 +167,35 @@ input {
   margin: auto;
 }
 
-/* 自适应swiper高度 */
-/* page,
-.page {
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
+/* 固定 */
+.fixed {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  /* background: #ffffff; */
+  width: 100% !important;
 }
 
-.contentSwiper {
-  flex-grow: 1;
-}
+/* 列表 使用方法:
 
-.swiper-item {
+*/
+.my_ul>.my_li {
+  position: relative;
   display: flex;
-} */
+  width: 90%;
+  margin: 0 auto;
+  min-height: 100rpx;
+  background-color: var(--white);
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid rgba(238, 238, 238, .6);
+}
+
+.my_ul>.my_li:last-child {
+  border: none;
+}
+
 
 
 /* ---- 九宫格布局  公共样式 ----*/
@@ -258,7 +207,6 @@ input {
 
 
 /* flex方式 flex不用再担心高度塌陷的问题，而且还可以轻松实现子元素横向竖向甚至按比例伸缩扩展的布局 */
-/* 可多行 */
 .gridItem {
   position: relative;
   width: calc(96.6% / 3);
@@ -282,20 +230,18 @@ input {
   height: 100%;
 }
 
-/* 选择个数是3的倍数的元素 */
 .gridView .gridItem:nth-of-type(3n) {
   margin-right: 0;
 }
 
-/* 7-9个元素第三行*/
+.gridView>.gridItem4:nth-of-type(n+4) {
+  margin-bottom: 0;
+}
+
 .gridView>.gridItem7:nth-of-type(n+7) {
   margin-bottom: 0;
 }
 
-/* 4-6个元素第二行 */
-.gridView>.gridItem4:nth-of-type(n+4) {
-  margin-bottom: 0;
-}
 
 
 /* ----
@@ -330,18 +276,29 @@ input {
 }
 
 
-.fixed {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  /* background: #ffffff; */
-  width: 100% !important;
-}
+/* 九宫格图片的实现方法:
+  flex方式:
+  <view class="gridView">
+    <view class="gridItem gridItem{{imgList.length>6?7:4}}" wx:for="{{imgList}}" wx:key="*this" wx:for-index="idx">
+      <view class="gridItem_inner">
+        <image class="inner_item"src="{{item}}" />
+      </view>
+    </view>
+  </view>
+  
+  grid方式:
+  <view class="gridView">
+    <view class="gridView_inner grid" >
+      <image wx:for="{{imgList}}" wx:key="*this" src="{{item}}/sq/200" />
+    </view> 
+  </view>
+
+*/
 
 
-/* 纵向自适应布局 */
-/* 
+
+/* 纵向自适应布局方法 */
+/*
   view col
     view flex 0 0 100rpx
     view flex-grow: 1;
@@ -349,19 +306,12 @@ input {
 */
 
 
-/* css 滤镜 控制黑白底色gif的 */
-.gif-black {
-  mix-blend-mode: screen;
-}
-
-.gif-white {
-  mix-blend-mode: color-dodge;
-}
+/* ==================
+        常用样式
+ ==================== */
 
 
-
-/* 屏蔽点击事件 */
-.preventEvent,
+/* 阻止默认屏幕点击事件 */
 .noEvent {
   pointer-events: none;
 }
@@ -375,23 +325,29 @@ input {
   opacity: 1
 }
 
+/* placeholder文本 */
 .placeholder {
   color: rgb(136, 135, 135);
   font-size: 26rpx;
 }
 
+/* 上下边框 */
 .udBorder {
   border-bottom: rgba(247, 245, 245, 0.6) solid 1px;
   border-top: rgba(247, 245, 245, 0.6) solid 1px;
 }
 
+/* 下边框down */
 .dBorder {
   border-bottom: rgba(247, 245, 245, 0.6) solid 1px !important;
 }
 
+/* 上边框up */
 .uBorder {
   border-top: rgba(247, 245, 245, 0.6) solid 1px;
 }
+
+
 
 /* 超出部分出省略号 */
 .text-overflow {
@@ -413,6 +369,7 @@ input {
   word-break: break-all;
 }
 
+/* 分割线 */
 .divLine {
   width: 100%;
   height: 1px;
@@ -432,22 +389,23 @@ input {
   height: 30rpx;
 }
 
+/* 圆 常用于头像等 */
 .round {
-  border-radius: 5000rpx;
+  border-radius: 50%;
 }
 
+/* 盒子圆角 */
 .radius {
   border-radius: 10rpx;
 }
 
-/* yes 白底灰字*/
+/* 白底灰字*/
 .bg-white {
   background-color: var(--white);
   color: var(--darkGray);
 }
 
 /* 浅灰背景色 */
-.bg,
 .bg-qh {
   background-color: #fdfbfb;
 }
@@ -470,20 +428,6 @@ input {
   max-width: 100%;
 }
 
-/* 搜索条 */
-.bar .search-form {
-  background-color: #f5f5f5;
-  line-height: 64rpx;
-  height: 64rpx;
-  font-size: 24rpx;
-  color: var(--black);
-  flex: 1;
-  display: flex;
-  align-items: center;
-  margin: 0 30rpx;
-}
-
-
 /* 按钮 */
 button,
 .btn {
@@ -501,14 +445,12 @@ button,
   margin-right: initial;
 }
 
+/* 点击按钮动效 */
 .btnHover {
   transform: translate(6rpx, 6rpx);
 }
 
-.btn.border_shadow {
-  border: 1rpx solid currentColor;
-  /* box-shadow: 0rpx 0rpx 2rpx currentColor; */
-}
+
 
 .btn[disabled] {
   opacity: 0.6;
@@ -532,7 +474,7 @@ button,
   margin: 50rpx auto;
 }
 
-/* 重置官方按钮样式 */
+/* 重置官方按钮样式 包含去掉边框和其他 */
 .resetBtn {
   background: transparent;
   border: none;
@@ -551,16 +493,11 @@ button,
   border: none;
 }
 
+/* 只去掉边框 */
 .noborder::after {
   border: none;
 }
 
-/* 需要的页面单独加,避免组件里面不支持 */
-/* button::after {
-  border: none;
-} */
-
-.response,
 .w100 {
   width: 100%;
 }
@@ -569,7 +506,7 @@ button,
   height: 100%;
 }
 
-.fitc,
+/* 适应内容高度 */
 .fitH {
   height: fit-content !important;
 }
@@ -578,50 +515,12 @@ button,
   width: fit-content !important;
 }
 
-/* 适配剩余高度 */
-.fitRestH {
-  flex-grow: 1;
-  height: 0;
-}
-
-.fitRestW {
-  flex-grow: 1;
-  width: 0;
-}
-
-.fitRest {
-  flex-grow: 1;
-}
-
-/* 第一个li的样式：li:first-child {
-  background: #f00;
-}
-
-最后一个li的样式：li:last-child {
-  background: #000;
-}
-
-第n个li的样式：li:nth-child(n) {
-  background: #000;
-}
-
-倒数第二个li的样式：nth-last-of-type(2) {
-  background: #000;
-}
-
-奇数列表：li:nth-child(odd) {
-  background: #f00;
-}
-
-偶数列表：li:nth-child(even) {
-  background: #f00;
-} */
 
 
 
-
-
-
+/* ==================
+      快速添加边距
+ ==================== */
 
 
 
@@ -891,65 +790,29 @@ button,
 }
 
 
-
+/* ==================
+      阴影
+ ==================== */
 
 
 
 /* 盒子阴影 */
 
-.boxShadow,
-.shadow-long {
+.shadow {
   box-shadow: 0 10rpx 40rpx 0 rgba(36, 36, 36, 0.14);
 }
 
-
-/* -- 边框阴影 -- */
-.shadow[class*='white'] {
-  --ShadowSize: 0 1rpx 6rpx;
+.shadow-s{
+  box-shadow: 0 1rpx 6rpx rgba(36, 36, 36, 0.14);
 }
 
-.shadow-lg {
-  --ShadowSize: 0rpx 40rpx 100rpx 0rpx;
+.shadow-l{
+  box-shadow: 0rpx 40rpx 100rpx 0rpx rgba(36, 36, 36, 0.14);
 }
 
-.shadow[class*="-grey"] {
-  box-shadow: var(--ShadowSize) var(--greyShadow);
-}
 
-.shadow-warp {
-  position: relative;
-  box-shadow: 0 0 30rpx rgba(0, 0, 0, 0.3);
-}
-
-.shadow-warp-s {
-  box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.1);
-}
-
-.shadow-warp-m {
-  box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.3);
-}
 
 /* 翘边阴影 */
-.shadow-warp:before,
-.shadow-warp:after {
-  position: absolute;
-  content: "";
-  top: 20rpx;
-  bottom: 30rpx;
-  left: 20rpx;
-  width: 50%;
-  box-shadow: 0 30rpx 20rpx rgba(24, 24, 24, 0.2);
-  transform: rotate(-3deg);
-  z-index: -2;
-}
-
-.shadow-warp:after {
-  right: 20rpx;
-  left: auto;
-  transform: rotate(3deg);
-}
-
-/* 字母错了之后再改 */
 .shadow-wrap {
   position: relative;
   box-shadow: 0 0 30rpx rgba(0, 0, 0, 0.3);
@@ -963,7 +826,6 @@ button,
   box-shadow: 0 0 16rpx rgba(0, 0, 0, 0.3);
 }
 
-/* 翘边阴影 */
 .shadow-wrap:before,
 .shadow-wrap:after {
   position: absolute;
@@ -983,8 +845,13 @@ button,
   transform: rotate(3deg);
 }
 
-/* 自动颜色阴影 */
+/* 右下继承颜色阴影 */
 .shadow-blur {
+  position: relative;
+  z-index: 0;
+}
+
+.shadow-blur-s {
   position: relative;
   z-index: 0;
 }
@@ -1004,11 +871,6 @@ button,
   opacity: 0.5;
   border-radius: inherit;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
-}
-
-.shadow-blur-s {
-  position: relative;
-  z-index: 0;
 }
 
 .shadow-blur-s::before {
@@ -1034,10 +896,6 @@ button,
   opacity: 0.5;
 }
 
-/* yes */
-.shadow[class*="-red"] {
-  box-shadow: var(--ShadowSize) var(--redShadow);
-}
 
 
 
@@ -1156,23 +1014,3 @@ switch.bg0[checked] .wx-switch-input.wx-switch-input-checked {
 }
 
 
-/* 列表 */
-/* .my_list+.my_list {
-  margin-top: 30rpx
-} */
-
-.my_ul>.my_li {
-  position: relative;
-  display: flex;
-  width: 90%;
-  margin: 0 auto;
-  min-height: 100rpx;
-  background-color: var(--white);
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1rpx solid rgba(238, 238, 238, .6);
-}
-
-.my_ul>.my_li:last-child {
-  border: none;
-}

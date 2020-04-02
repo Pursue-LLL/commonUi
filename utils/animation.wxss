@@ -1,16 +1,12 @@
 
-/* 过渡属性 */
+/* 过渡 css */
+
+/* 添加过渡属性 */
 .transition {
   transition: All .5s cubic-bezier(0, 0, 0.1, 1);
 }
 
-/* 展开收缩 */
-.slideDown {
-  height: 0;
-  overflow: hidden;
-}
-
-/* 缩放动画 */
+/* 缩放 0-1 */
 .scale {
   transition: transform 0.5s;
   transform: scale(0);
@@ -20,7 +16,7 @@
   transform: scale(1);
 }
 
-/* 旋转动画 */
+/* 旋转180° */
 .rotate {
   transition: All 0.5s ease;
 }
@@ -31,177 +27,91 @@
 }
 
 
-/* 闪烁图标 infinite */
-.glimmer {
+
+
+/* 动画 css am=animation*/
+[class*=am-] {
+  am-duration: .5s;
+  am-timing-function: ease-out;
+  am-fill-mode: both
+}
+
+/* 闪烁 (自定义次数infinite/3) 需要吸引人注意的例如红包等 */
+.am-glimmer {
   animation: scaleout 1.1s 3 ease-in-out;
 }
 
-@keyframes scaleout {
-  0% {
-    transform: scale(0.8);
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 0.7;
-  }
-}
-
-/* 摇动渐隐 */
-.RockOpa {
+/* 摇动渐隐  例如广播喇叭图标等*/
+.am-rockOpa {
   animation: RockOpa 1.1s infinite ease-in-out;
 }
 
-@keyframes RockOpa {
-  0% {
-    opacity: 1;
-  }
-
-  40% {
-    transform: rotate(20deg);
-  }
-
-  80% {
-    transform: rotate(-20deg);
-  }
-
-  100% {
-    opacity: 0.9;
-  }
-}
-
 /* 缩放摇动 */
-.scaleRock {
+.am-scaleRock {
   animation: scaleRock 1.1s infinite ease-in-out;
-}
-
-@keyframes scaleRock {
-  0% {
-    transform: scale(1.0);
-  }
-
-  40% {
-    transform: rotate(20deg);
-  }
-
-  80% {
-    transform: rotate(-20deg);
-  }
-
-  100% {
-    transform: scale(1.2);
-    opacity: 0.4;
-  }
 }
 
 /* 旋转 */
 .iconSpin {
-  -webkit-animation: spin 2s infinite linear;
   animation: spin 2s infinite linear;
   display: inline-block;
 }
 
 .iconPulse {
-  -webkit-animation: spin 1s infinite steps(8);
   animation: spin 1s infinite steps(8);
   display: inline-block;
 }
 
-
-@keyframes spin {
-  0% {
-    -webkit-transform: rotate(0);
-    transform: rotate(0);
-  }
-
-  100% {
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
-  }
+/* 中心扩散水波纹 */
+.am-ripple {
+  am-name: ripple
 }
 
-/* 水波纹 */
-.animation-ripple {
-  animation-name: ripple
+.am-fade {
+  am-name: fade;
+  am-duration: .8s;
+  am-timing-function: linear
 }
 
-@keyframes ripple {
-  0% {
-    opacity: .3;
-  }
-
-  40% {
-    -webkit-box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px 10px #14A6EC, 0 0 0 10px rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px 10px #14A6EC, 0 0 0 10px rgba(255, 255, 255, 0.5);
-    opacity: .5;
-  }
-
-  100% {
-    -webkit-box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px 10px #14A6EC, 0 0 0 10px rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px 10px #14A6EC, 0 0 0 10px rgba(255, 255, 255, 0.5);
-    opacity: 0;
-    -webkit-transform: scale(1.5);
-    transform: scale(1.5);
-  }
+.am-fadeOut {
+  am-name: fadeOut;
+  am-duration: .8s;
+  am-timing-function: linear
 }
 
-
-
-
-
-/* Animation css */
-[class*=animation-] {
-  animation-duration: .5s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: both
+.am-scale-up {
+  am-name: scale-up
 }
 
-.animation-fade {
-  animation-name: fade;
-  animation-duration: .8s;
-  animation-timing-function: linear
-}
-
-.animation-fadeOut {
-  animation-name: fadeOut;
-  animation-duration: .8s;
-  animation-timing-function: linear
-}
-
-.animation-scale-up {
-  animation-name: scale-up
-}
-
-.animation-scale-down {
-  animation-name: scale-down;
+.am-scale-down {
+  am-name: scale-down;
 
 }
 
-.animation-slide-top {
-  animation-name: slide-top;
+.am-slide-top {
+  am-name: slide-top;
 
 }
 
-.animation-slide-bottom {
-  animation-name: slide-bottom
+.am-slide-bottom {
+  am-name: slide-bottom
 }
 
-.animation-slide-left {
-  animation-name: slide-left
+.am-slide-left {
+  am-name: slide-left
 }
 
-.animation-slide-right {
-  animation-name: slide-right
+.am-slide-right {
+  am-name: slide-right
 }
 
-.animation-shake {
-  animation-name: shake
+.am-shake {
+  am-name: shake
 }
 
-.animation-reverse {
-  animation-direction: reverse
+.am-reverse {
+  am-direction: reverse
 }
-
 
 
 @keyframes fade {
@@ -340,3 +250,84 @@
   }
 }
 
+
+@keyframes ripple {
+  0% {
+    opacity: .3;
+  }
+
+  40% {
+    -webkit-box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px 10px #14A6EC, 0 0 0 10px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px 10px #14A6EC, 0 0 0 10px rgba(255, 255, 255, 0.5);
+    opacity: .5;
+  }
+
+  100% {
+    -webkit-box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px 10px #14A6EC, 0 0 0 10px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px 10px #14A6EC, 0 0 0 10px rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+}
+
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes scaleRock {
+  0% {
+    transform: scale(1.0);
+  }
+
+  40% {
+    transform: rotate(20deg);
+  }
+
+  80% {
+    transform: rotate(-20deg);
+  }
+
+  100% {
+    transform: scale(1.2);
+    opacity: 0.4;
+  }
+}
+
+@keyframes RockOpa {
+  0% {
+    opacity: 1;
+  }
+
+  40% {
+    transform: rotate(20deg);
+  }
+
+  80% {
+    transform: rotate(-20deg);
+  }
+
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes scaleout {
+  0% {
+    transform: scale(0.8);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
