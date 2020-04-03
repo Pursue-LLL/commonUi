@@ -50,16 +50,71 @@ onLaunch生命周期中 wx.util = util  即可全局使用wx.util调用工具函
 用于实现全局事件(页面间)通讯和状态管理的类  
 例如在改变主题页设置了当前主题为黑色,则任何注册并监听了该变化的页面的主题都变为黑色  
 使用:在页面引入或app.js引入挂在wx对象上全局使用  
-### 将 components 文件夹复制到你的项目
+### 组件 将 components 文件夹复制到你的项目
 该文件夹包含20+功能强大的ui组件 ,在页面的json文件里注册即可使用,如ui-icon、ui-toast等组件需要全局使用的,需在app.json里注册,
 之后在需要的页面wxml里使用,js中像官方组件一样调用即可
-#### **ui-icon**
+## icon组件
 icon图标组件,图标使用阿里iconfont  
 例 使用一个向右的箭头 颜色#eee 尺寸22  
 
     <ui-icon type="arrow-right" color="#eee" size="22"><ui-icon>  
     
 
+## confirm组件
+![](http://yun.qyayun.com/2020/04/02/9d42a18e40e4475880c520000766557a.PNG)　　
+###使用方法：
+**wxml**文件　
+
+	<ui-confirm id="confirm"></ui-confirm>
+
+**js**文件
+	
+	    wx._showConfirm(this, { title: '立即去查看并分享我的主页', cancleText: '稍后' }).then(() => {
+    		／／确认操作
+        }).catch(() => {
+			／／取消操作
+		})
+
+## 弹出输入框 (model组件)
+![](http://yun.qyayun.com/2020/04/02/342439e340d328ba80f5145e7c420d32.PNG)　　
+###使用方法：
+**wxml**文件　
+
+	<ui-modal id="modal" bindgo="cb"></ui-modal>
+
+**js**文件
+	
+        wx._showModal(this, {
+          len: 30,
+          title: '修改微信号',
+          id: 'wechat',
+          input: 1	//textarea:1
+        })
+
+        wx._showModal(that, {
+         title: '请您注意',
+         hint: '您选择的图片经检测包含违规内容,如对本次处理有异议,可点击下方申诉',
+         cancle: '我要申诉',
+         confirm: '我知道了'
+        }).then(() => {
+           console.log('确定');
+        }).catch(() => {
+           console.log('取消');
+        })
+
+## 滑动移动组件(swipe-out)
+![](http://yun.qyayun.com/2020/04/02/08aaa73a40af4da380e9000f461b5013.PNG)　
+
+## 选项弹窗组件
+![](http://yun.qyayun.com/2020/04/02/2ffaa8b5403d972b804163e39f66b140.PNG)　
+
+## 弹出pop层
+![](http://yun.qyayun.com/2020/04/02/e831fd7440c5d202803388cce4c2fd0a.PNG)　
+
+## 内嵌页面抽屉
+![](http://yun.qyayun.com/2020/04/02/73c0570c401e19ed806988ef3a2ba917.PNG)　
+
+![](http://yun.qyayun.com/2020/04/02/594a7108406d807a80c71168836ec8b3.PNG)　
 ### 其他功能性模块可根据需要使用 
 #### **自定义tabbar**
 可随评论滚动方向而显示或隐藏的tabbar,中间可使用图片  
@@ -70,7 +125,22 @@ icon图标组件,图标使用阿里iconfont
 使用wxs实现的拖动改变菜单顺序  
 #### **高性能的吸顶**
 使用节点布局相交状态api替代监听scroll来实现更高性能更简单的吸顶组件  
-#### ** ...  **
+
+
+###注意组件化模块化开发
+类似或可复用代码多的使用 Component 构造器构造页面,使用behavior管理通用方法和变量
+
+#常见问题
+
+1.减少setData的频率和数据,多次变更合并提交,上拉加载使用二维数组  
+
+	原理:逻辑层（App Service）和 视图层（View）
+	通过系统层的JSBridage来通信的，逻辑层把数据变化通知到视图层，触发视图层页面更新，视图层把触发的事件通知到
+	逻辑层进行业务处理。
+2.iphoneX兼容性  
+3.频繁触发函数的情况使用节流防抖
+
+#### ** 组件部分持续更新...  **
 
 如有问题请添加微信  
 
