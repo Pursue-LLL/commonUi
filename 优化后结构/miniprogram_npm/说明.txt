@@ -1,0 +1,1 @@
+需要性能更优的监听属性和计算属性可用,可引入miniprogram-computed
